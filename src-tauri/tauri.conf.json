@@ -30,7 +30,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.breakout.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -57,10 +57,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
-        "resizable": true,
-        "title": "Tauri App",
-        "width": 800
+        "height": 610,
+        "resizable": false,
+        "title": "Tauri Breakout",
+        "width": 510
       }
     ]
   }
