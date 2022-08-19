@@ -2,6 +2,7 @@
 import { exit } from '@tauri-apps/api/process';
 import { FIELD_WIDTH, FIELD_HEIGHT, GAME_STATUS, Field } from './field';
 import { Bar, DIRECTION } from './bar';
+import { Ball } from './ball';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -21,6 +22,7 @@ if (!canvasElem || !ctx) {
 let field = new Field(ctx!);
 let bar = new Bar(ctx!, 0.0, FIELD_WIDTH);
 let keyDirection = DIRECTION.NONE;
+let ball = new Ball(ctx!);
 
 const keyDown = (e: any) => {
   switch(e.key) {
@@ -47,6 +49,8 @@ const mainLoop = () => {
   field.draw();
   bar.updatePosition(keyDirection);
   bar.draw();
+  // ball.updatePosition({x: ball.status.pos.x + 1, y: ball.status.pos.y - 1});
+  ball.draw();
 }
 
 document.addEventListener('keydown', keyDown);
