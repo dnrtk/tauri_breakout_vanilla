@@ -57,10 +57,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 610,
+        "height": 630,
         "resizable": false,
         "title": "TAURI Breakout",
-        "width": 510
+        "width": 530
       }
     ]
   }
