@@ -5,11 +5,6 @@ import { BarStatus } from './bar';
 import { BallStatus } from './ball';
 import { BlockStatus } from './block';
 
-interface Pos2 {
-    x: number,
-    y: number
-};
-
 interface CalcNextStatus {
     field: FieldStatus,
     bar: BarStatus,
@@ -34,4 +29,3 @@ export type {
 export {
     calc_next_status
 };
-

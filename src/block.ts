@@ -92,6 +92,15 @@ class BlockList {
     }
     return block_status_list;
   }
+
+  setBlockStatusList(block_status_list: Array<BlockStatus>) {
+    this.status.block_list.splice(0);
+    for (let index = 0; index < block_status_list.length; index++) {
+      let block_status = block_status_list[index];
+      let block = new Block(this.ctx, block_status.pos_min.x, block_status.pos_min.y);
+      this.status.block_list.push(block);
+    }
+  }
 }
 
 export type {

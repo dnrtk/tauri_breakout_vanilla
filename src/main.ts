@@ -1,6 +1,6 @@
 // import './style.css'
 import { exit } from '@tauri-apps/api/process';
-import { FIELD_WIDTH, FIELD_HEIGHT, GAME_STATUS, Field } from './field';
+import { FIELD_WIDTH, FIELD_HEIGHT, Field } from './field';
 import { Bar, DIRECTION } from './bar';
 import { Ball } from './ball';
 import { BlockList } from './block';
@@ -58,14 +58,16 @@ const mainLoop = async () => {
   let res = await calc_next_status(req) as CalcNextStatus;
 
   // APIの結果反映
+  field.status = res.field;
+  bar.status = res.bar;
   ball.status = res.ball;
+  block_list.setBlockStatusList(res.block_list);
 
   // 画面更新
   ctx!.clearRect(0, 0, FIELD_WIDTH, FIELD_HEIGHT); //一旦全消去
   field.draw();
   bar.updatePosition(keyDirection);
   bar.draw();
-  // ball.updatePosition({x: ball.status.pos.x + 1, y: ball.status.pos.y - 1});
   ball.draw();
   block_list.draw();
 }
