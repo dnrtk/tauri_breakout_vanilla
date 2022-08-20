@@ -83,6 +83,19 @@ class BlockList {
       block.draw();
     }
   }
+
+  getBlockStatusList() {
+    let block_status_list = new Array<BlockStatus>;
+    for (let index = 0; index < this.status.block_list.length; index++) {
+      let block = this.status.block_list[index];
+      block_status_list.push(block.status);
+    }
+    return block_status_list;
+  }
+}
+
+export type {
+  BlockStatus
 }
 
 export {

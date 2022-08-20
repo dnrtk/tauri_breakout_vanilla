@@ -85,6 +85,10 @@ class Field {
   }
 }
 
+export type {
+  FieldStatus
+}
+
 export {
   FIELD_WIDTH,
   FIELD_HEIGHT,

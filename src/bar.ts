@@ -82,6 +82,10 @@ class Bar {
 
 }
 
+export type {
+  BarStatus
+}
+
 export {
   DIRECTION,
   Bar

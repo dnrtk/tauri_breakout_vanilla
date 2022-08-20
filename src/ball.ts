@@ -51,6 +51,10 @@ class Ball {
   }
 }
 
+export type {
+  BallStatus
+}
+
 export {
   Ball
 };

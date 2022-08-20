@@ -4,7 +4,7 @@ import { FIELD_WIDTH, FIELD_HEIGHT, GAME_STATUS, Field } from './field';
 import { Bar, DIRECTION } from './bar';
 import { Ball } from './ball';
 import { BlockList } from './block';
-import { Pos2, calc_next_status } from './api';
+import { CalcNextStatus, calc_next_status } from './api';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -49,10 +49,16 @@ const keyUp = (e: any) => {
 
 const mainLoop = async () => {
   // 状態更新
-  // let req: Pos2 = {x: 12.34, y: 56.78};
-  let req = ball.status.pos;
-  let res = await calc_next_status(req);
-  ball.status.pos = res as Pos2;
+  let req: CalcNextStatus = {
+    field: field.status,
+    bar: bar.status,
+    ball: ball.status,
+    block_list: block_list.getBlockStatusList()
+  };
+  let res = await calc_next_status(req) as CalcNextStatus;
+
+  // APIの結果反映
+  ball.status = res.ball;
 
   // 画面更新
   ctx!.clearRect(0, 0, FIELD_WIDTH, FIELD_HEIGHT); //一旦全消去
